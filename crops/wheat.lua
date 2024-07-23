@@ -214,3 +214,6 @@ minetest.register_craft({
 	recipe = "farming:wheat",
 	burntime = 1
 })
+
+-- mapgen
+farming.register_decoration("wheat",8)

@@ -83,19 +83,4 @@ farming.registered_plants["farming:raspberries"] = {
 }
 
 -- mapgen
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "mcl_core:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.raspberry,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 687,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 3,
-	y_max = 15,
-	decoration = "farming:raspberry_4"
-})
+farming.register_decoration("raspberry",4)

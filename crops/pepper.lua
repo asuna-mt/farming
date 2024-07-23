@@ -155,32 +155,8 @@ farming.registered_plants["farming:pepper"] = {
 	seed = "farming:peppercorn",
 	minlight = farming.min_light,
 	maxlight = farming.max_light,
-	steps = 5
+	steps = 7
 }
 
 -- mapgen
-local mg = farming.mapgen == "v6"
-
-def = {
-	grow_on = mg and {"default:dirt_with_grass"} or {
-			"default:dirt_with_rainforest_litter", "mcl_core:dirt_with_grass"}
-}
-
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = def.grow_on,
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.pepper,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 243,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 5,
-	y_max = 35,
-	decoration = {"farming:pepper_5", "farming:pepper_6", "farming:pepper_7"},
-	spawn_by = "group:tree",
-	num_spawn_by = 1
-})
+farming.register_decoration("pepper",7)

@@ -197,27 +197,4 @@ farming.registered_plants["farming:soy_pod"] = {
 }
 
 -- mapgen
-local mg = farming.mapgen == "v6"
-
-def = {
-	spawn_on = mg and {"default:dirt_with_grass"} or {"default:dirt_with_dry_grass",
-			"default:dirt_with_rainforest_litter", "default:dry_dirt_with_dry_grass",
-			"mcl_core:dirt_with_grass"}
-}
-
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = def.spawn_on,
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.soy,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 809,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 20,
-	y_max = 50,
-	decoration = "farming:soy_6"
-})
+farming.register_decoration("soy",7)

@@ -172,3 +172,6 @@ minetest.register_craft({
 	recipe = "farming:rice_bread",
 	burntime = 1
 })
+
+-- mapgen
+farming.register_decoration("rice",8)

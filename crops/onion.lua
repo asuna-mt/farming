@@ -105,19 +105,4 @@ farming.registered_plants["farming:onion"] = {
 }
 
 -- mapgen
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "mcl_core:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.onion,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 912,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 5,
-	y_max = 28,
-	decoration = "farming:onion_5"
-})
+farming.register_decoration("onion",5)

@@ -24,7 +24,44 @@ farming = {
 	use_utensils = minetest.settings:get_bool("farming_use_utensils") ~= false,
 	mtg = minetest.get_modpath("default"),
 	mcl = minetest.get_modpath("mcl_core"),
-	sounds = {}
+	sounds = {},
+	register_decoration = function(crop,steps)
+		biomes = asuna.features.crops[crop]
+		if not biomes then
+			return
+		end
+
+		local decor = {}
+		for i = 0, (steps > 4 and 2 or 1) do
+			decor[i + 1] = "farming:" .. crop .. "_" .. (steps - i)
+		end
+
+		local chars = {crop:byte()}
+		local seed = 11111
+		for _,c in ipairs(chars) do
+			seed = seed + c
+		end
+		seed = seed + #crop
+
+		minetest.register_decoration(biomes.inject_decoration({
+			name = "farming:" .. crop,
+			deco_type = "simple",
+			place_on = "group:soil",
+			sidelen = 8,
+			noise_params = {
+				offset = -0.4125,
+				scale = 0.3575,
+				spread = {x = 14, y = 14, z = 14},
+				seed = seed,
+				octaves = 2,
+				persist = 0.62,
+				lacunarity = 0.675,
+			},
+			y_max = 31000,
+			y_min = 1,
+			decoration = decor,
+		}))
+	end,
 }
 
 -- default sound functions just incase

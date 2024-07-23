@@ -70,21 +70,4 @@ farming.registered_plants["farming:ginger"] = {
 }
 
 -- mapgen
-minetest.register_decoration({
-	name = "farming:ginger_4",
-	deco_type = "simple",
-	place_on = {"default:dirt_with_rainforest_litter", "mcl_core:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.ginger,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 999,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_max = 80,
-	y_min = 1,
-	decoration = "farming:ginger_3",
-	param2 = 3
-})
+farming.register_decoration("ginger",5)

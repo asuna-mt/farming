@@ -109,19 +109,4 @@ farming.registered_plants["farming:tomato"] = {
 }
 
 -- mapgen
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "mcl_core:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.tomato,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 365,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 5,
-	y_max = 25,
-	decoration = "farming:tomato_7"
-})
+farming.register_decoration("tomato",8)

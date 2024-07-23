@@ -108,24 +108,4 @@ farming.registered_plants["farming:mint"] = {
 }
 
 -- mapgen
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {
-		"default:dirt_with_grass", "default:dirt_with_coniferous_litter",
-		"mcl_core:dirt_with_grass"
-	},
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.mint,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 801,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 0,
-	y_max = 75,
-	decoration = "farming:mint_4",
-	spawn_by = {"group:water", "group:sand"},
-	num_spawn_by = 1
-})
+farming.register_decoration("mint",4)

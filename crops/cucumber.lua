@@ -67,28 +67,4 @@ farming.registered_plants["farming:cucumber"] = {
 }
 
 -- mapgen
-local mg = farming.mapgen == "v6"
-
-def = {
-	near = mg and "group:water" or nil,
-	num = mg and 1 or -1,
-}
-
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "mcl_core:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = farming.cucumber,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 245,
-		octaves = 3,
-		persist = 0.6
-	},
-	y_min = 1,
-	y_max = 20,
-	decoration = "farming:cucumber_4",
-	spawn_by = def.near,
-	num_spawn_by = def.num
-})
+farming.register_decoration("cucumber",4)
