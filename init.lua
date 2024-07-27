@@ -25,15 +25,20 @@ farming = {
 	mtg = minetest.get_modpath("default"),
 	mcl = minetest.get_modpath("mcl_core"),
 	sounds = {},
-	register_decoration = function(crop,steps)
+	register_decoration = function(crop,steps,alt_source)
 		biomes = asuna.features.crops[crop]
 		if not biomes then
 			return
 		end
 
-		local decor = {}
-		for i = 0, (steps > 4 and 2 or 1) do
-			decor[i + 1] = "farming:" .. crop .. "_" .. (steps - i)
+		local decor
+		if alt_source then
+			decor = alt_source
+		else
+			decor = {}
+			for i = 0, (steps > 4 and 2 or 1) do
+				decor[i + 1] = "farming:" .. crop .. "_" .. (steps - i)
+			end
 		end
 
 		local chars = {crop:byte()}
