@@ -1,43 +1,31 @@
 
-local S = farming.translate
-local a = farming.recipe_items
+-- Textures for peas and their crop were done by Andrey01
 
--- Textures for Pea crop and Peas were done by Andrey01
+local S = minetest.get_translator("farming")
 
--- pea pod
+-- item/seed
+
 minetest.register_craftitem("farming:pea_pod", {
 	description = S("Pea Pod"),
 	inventory_image = "farming_pea_pod.png",
-	groups = {
-		compostability = 48, seed = 2, food_peas = 1, food_pea_pod = 1, flammable = 2
-	},
+	groups = {compostability = 48, seed = 2, food_peas = 1, food_pea_pod = 1},
+	on_use = minetest.item_eat(1),
+
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.place_seed(itemstack, placer, pointed_thing, "farming:pea_1")
-	end,
-	on_use = minetest.item_eat(1)
+	end
 })
+
+farming.add_eatable("farming:pea_pod", 1)
 
 -- replacement for separate peas item that was removed
+
 minetest.register_alias("farming:peas", "farming:pea_pod")
 
--- pea soup
-minetest.register_craftitem("farming:pea_soup", {
-	description = S("Pea Soup"),
-	inventory_image = "farming_pea_soup.png",
-	groups = {flammable = 2, compostability = 65},
-	on_use = minetest.item_eat(4, a.bowl)
-})
-
-minetest.register_craft({
-	output = "farming:pea_soup",
-	recipe = {
-		{"group:food_peas"},
-		{"group:food_peas"},
-		{"group:food_bowl"}
-	}
-})
+-- crop definition
 
 local def = {
+	description = S("Pea") .. S(" Crop"),
 	drawtype = "plantlike",
 	tiles = {"farming_pea_1.png"},
 	paramtype = "light",
@@ -55,25 +43,30 @@ local def = {
 	},
 	_mcl_hardness = farming.mcl_hardness,
 	is_ground_content = false,
-	sounds = farming.sounds.node_sound_leaves_defaults()
+	sounds = farming.node_sound_leaves_defaults()
 }
 
 -- stage 1
+
 minetest.register_node("farming:pea_1", table.copy(def))
 
 -- stage 2
+
 def.tiles = {"farming_pea_2.png"}
 minetest.register_node("farming:pea_2", table.copy(def))
 
 -- stage 3
+
 def.tiles = {"farming_pea_3.png"}
 minetest.register_node("farming:pea_3", table.copy(def))
 
 -- stage 4
+
 def.tiles = {"farming_pea_4.png"}
 minetest.register_node("farming:pea_4", table.copy(def))
 
--- stage 5
+-- stage 5 (final)
+
 def.tiles = {"farming_pea_5.png"}
 def.groups.growing = nil
 def.selection_box = farming.select_final
@@ -88,6 +81,7 @@ def.drop = {
 minetest.register_node("farming:pea_5", table.copy(def))
 
 -- add to registered_plants
+
 farming.registered_plants["farming:pea_pod"] = {
 	crop = "farming:pea",
 	seed = "farming:pea_pod",
