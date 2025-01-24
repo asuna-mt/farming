@@ -66,7 +66,7 @@ farming = {
 			decoration = decor,
 		}))
 	end,
-	mcl_hardness = 0.01
+	mcl_hardness = 0.01,
 	translate = S
 }
 
