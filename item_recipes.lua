@@ -1068,15 +1068,6 @@ register_craft(true,{
 	}
 })
 
-register_craft(true, {
-	output = "farming:cotton 3",
-	recipe = {
-		{"farming:hemp_fibre"},
-		{"farming:hemp_fibre"},
-		{"farming:hemp_fibre"}
-	}
-})
-
 -- saucepan
 
 register_craft(true,{
