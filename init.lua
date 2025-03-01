@@ -35,7 +35,7 @@ farming = {
 			decor = alt_source
 		else
 			decor = {}
-			for i = 0, (steps > 4 and 2 or 1) do
+			for i = 0, (steps > 4 and 2 or 0) do
 				decor[i + 1] = "farming:" .. crop .. "_" .. (steps - i)
 			end
 		end
