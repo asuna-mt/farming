@@ -1,5 +1,5 @@
 
-local S = minetest.get_translator("farming")
+local S = core.get_translator("farming")
 local a = farming.recipe_items
 
 local function register_craftitem(condition,eatable,name,def)
@@ -33,7 +33,7 @@ register_craftitem(true,nil,"farming:flour", {
 register_craftitem(farming.garlic,1,"farming:garlic", {
 	description = S("Garlic"),
 	inventory_image = "crops_garlic.png",
-	on_use = minetest.item_eat(1),
+	on_use = core.item_eat(1),
 	groups = {food_garlic = 1, compostability = 55}
 })
 
@@ -69,7 +69,7 @@ register_craftitem(farming.corn,5,"farming:corn_cob", {
 	description = S("Corn on the Cob"),
 	inventory_image = "farming_corn_cob.png",
 	groups = {compostability = 65, food_corn_cooked = 1},
-	on_use = minetest.item_eat(5)
+	on_use = core.item_eat(5)
 })
 
 -- Popcorn
@@ -78,7 +78,7 @@ register_craftitem(farming.corn,4,"farming:popcorn", {
 	description = S("Popcorn"),
 	inventory_image = "farming_popcorn.png",
 	groups = {compostability = 55, food_popcorn = 1},
-	on_use = minetest.item_eat(4)
+	on_use = core.item_eat(4)
 })
 
 -- Cornstarch
@@ -105,7 +105,7 @@ register_node(farming.coffee,2,"farming:coffee_cup", {
 	},
 	groups = {vessel = 1, dig_immediate = 3, attached_node = 1, drink = 1, handy = 1},
 	is_ground_content = false,
-	on_use = minetest.item_eat(2, "vessels:drinking_glass"),
+	on_use = core.item_eat(2, "vessels:drinking_glass"),
 	sounds = farming.node_sound_glass_defaults()
 })
 
@@ -117,7 +117,7 @@ minetest.register_alias("farming:drinking_cup", "vessels:drinking_glass")
 register_craftitem(farming.cocoa,3,"farming:chocolate_dark", {
 	description = S("Bar of Dark Chocolate"),
 	inventory_image = "farming_chocolate_dark.png",
-	on_use = minetest.item_eat(3)
+	on_use = core.item_eat(3)
 })
 
 -- Chocolate block (not edible)
@@ -135,7 +135,7 @@ register_node(farming.cocoa,nil,"farming:chocolate_block", {
 register_craftitem(farming.chili,8,"farming:chili_bowl", {
 	description = S("Bowl of Chili"),
 	inventory_image = "farming_chili_bowl.png",
-	on_use = minetest.item_eat(8, a.bowl),
+	on_use = core.item_eat(8, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -143,7 +143,7 @@ register_craftitem(farming.chili,8,"farming:chili_bowl", {
 
 register_craftitem(farming.chili,nil,"farming:chili_powder", {
 	description = S("Chili Powder"),
-	on_use = minetest.item_eat(-1),
+	on_use = core.item_eat(-1),
 	inventory_image = "farming_chili_powder.png",
 	groups = {compostability = 45}
 })
@@ -153,7 +153,7 @@ register_craftitem(farming.chili,nil,"farming:chili_powder", {
 register_craftitem(farming.carrot,4,"farming:carrot_juice", {
 	description = S("Carrot Juice"),
 	inventory_image = "farming_carrot_juice.png",
-	on_use = minetest.item_eat(4, "vessels:drinking_glass"),
+	on_use = core.item_eat(4, "vessels:drinking_glass"),
 	groups = {vessel = 1, drink = 1}
 })
 
@@ -162,7 +162,7 @@ register_craftitem(farming.carrot,4,"farming:carrot_juice", {
 register_craftitem(farming.blueberry or core.registered_items["default:blueberries"],6,"farming:blueberry_pie", {
 	description = S("Blueberry Pie"),
 	inventory_image = "farming_blueberry_pie.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 75}
 })
 
@@ -171,7 +171,7 @@ register_craftitem(farming.blueberry or core.registered_items["default:blueberri
 register_craftitem(farming.blueberry or core.registered_items["default:blueberries"],2,"farming:muffin_blueberry", {
 	description = S("Blueberry Muffin"),
 	inventory_image = "farming_blueberry_muffin.png",
-	on_use = minetest.item_eat(2),
+	on_use = core.item_eat(2),
 	groups = {compostability = 65}
 })
 
@@ -181,7 +181,7 @@ register_craftitem(farming.tomato,8,"farming:tomato_soup", {
 	description = S("Tomato Soup"),
 	inventory_image = "farming_tomato_soup.png",
 	groups = {compostability = 65, drink = 1},
-	on_use = minetest.item_eat(8, "farming:bowl")
+	on_use = core.item_eat(8, "farming:bowl")
 })
 
 -- sliced bread
@@ -189,7 +189,7 @@ register_craftitem(farming.tomato,8,"farming:tomato_soup", {
 register_craftitem(true,1,"farming:bread_slice", {
 	description = S("Sliced Bread"),
 	inventory_image = "farming_bread_slice.png",
-	on_use = minetest.item_eat(1),
+	on_use = core.item_eat(1),
 	groups = {food_bread_slice = 1, compostability = 65}
 })
 
@@ -198,7 +198,7 @@ register_craftitem(true,1,"farming:bread_slice", {
 register_craftitem(true,1,"farming:toast", {
 	description = S("Toast"),
 	inventory_image = "farming_toast.png",
-	on_use = minetest.item_eat(1),
+	on_use = core.item_eat(1),
 	groups = {food_toast = 1, compostability = 65}
 })
 
@@ -207,7 +207,7 @@ register_craftitem(true,1,"farming:toast", {
 register_craftitem(true,4,"farming:toast_sandwich", {
 	description = S("Toast Sandwich"),
 	inventory_image = "farming_toast_sandwich.png",
-	on_use = minetest.item_eat(4),
+	on_use = core.item_eat(4),
 	groups = {compostability = 85}
 })
 
@@ -330,7 +330,7 @@ register_node(true,3,"farming:mayonnaise", {
 	paramtype = "light",
 	is_ground_content = false,
 	walkable = false,
-	on_use = minetest.item_eat(3),
+	on_use = core.item_eat(3),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.25, -0.5, -0.25, 0.25, 0.45, 0.25}
@@ -368,7 +368,7 @@ register_craftitem(true,2,"farming:turkish_delight", {
 	description = S("Turkish Delight"),
 	inventory_image = "farming_turkish_delight.png",
 	groups = {compostability = 85},
-	on_use = minetest.item_eat(2)
+	on_use = core.item_eat(2)
 })
 
 -- Garlic Bread
@@ -377,7 +377,7 @@ register_craftitem(farming.garlic,2,"farming:garlic_bread", {
 	description = S("Garlic Bread"),
 	inventory_image = "farming_garlic_bread.png",
 	groups = {compostability = 65},
-	on_use = minetest.item_eat(2)
+	on_use = core.item_eat(2)
 })
 
 -- Donuts (thanks to Bockwurst for making the donut images)
@@ -385,21 +385,21 @@ register_craftitem(farming.garlic,2,"farming:garlic_bread", {
 register_craftitem(true,4,"farming:donut", {
 	description = S("Donut"),
 	inventory_image = "farming_donut.png",
-	on_use = minetest.item_eat(4),
+	on_use = core.item_eat(4),
 	groups = {compostability = 65}
 })
 
 register_craftitem(farming.cocoa,6,"farming:donut_chocolate", {
 	description = S("Chocolate Donut"),
 	inventory_image = "farming_donut_chocolate.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 65}
 })
 
 register_craftitem(true,6,"farming:donut_apple", {
 	description = S("Apple Donut"),
 	inventory_image = "farming_donut_apple.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 65}
 })
 
@@ -408,7 +408,7 @@ register_craftitem(true,6,"farming:donut_apple", {
 register_craftitem(farming.grains and farming.soy,6,"farming:porridge", {
 	description = S("Porridge"),
 	inventory_image = "farming_porridge.png",
-	on_use = minetest.item_eat(6, a.bowl),
+	on_use = core.item_eat(6, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -417,7 +417,7 @@ register_craftitem(farming.grains and farming.soy,6,"farming:porridge", {
 register_craftitem(farming.soy,6,"farming:jaffa_cake", {
 	description = S("Jaffa Cake"),
 	inventory_image = "farming_jaffa_cake.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 65}
 })
 
@@ -426,7 +426,7 @@ register_craftitem(farming.soy,6,"farming:jaffa_cake", {
 register_craftitem(true,6,"farming:apple_pie", {
 	description = S("Apple Pie"),
 	inventory_image = "farming_apple_pie.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 75}
 })
 
@@ -443,7 +443,7 @@ register_craftitem(true,1,"farming:cactus_juice", {
 
 			local num = math.random(5) == 1 and -1 or 2
 
-			return minetest.do_item_eat(num, "vessels:drinking_glass",
+			return core.do_item_eat(num, "vessels:drinking_glass",
 					itemstack, user, pointed_thing)
 		end
 	end
@@ -462,7 +462,7 @@ register_craftitem(true,nil,"farming:pasta", {
 register_craftitem(true,6,"farming:mac_and_cheese", {
 	description = S("Mac & Cheese"),
 	inventory_image = "farming_mac_and_cheese.png",
-	on_use = minetest.item_eat(6, a.bowl),
+	on_use = core.item_eat(6, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -471,7 +471,7 @@ register_craftitem(true,6,"farming:mac_and_cheese", {
 register_craftitem(farming.garlic and farming.tomato,8,"farming:spaghetti", {
 	description = S("Spaghetti"),
 	inventory_image = "farming_spaghetti.png",
-	on_use = minetest.item_eat(8),
+	on_use = core.item_eat(8),
 	groups = {compostability = 65}
 })
 
@@ -480,7 +480,7 @@ register_craftitem(farming.garlic and farming.tomato,8,"farming:spaghetti", {
 register_craftitem(farming.chili and farming.rice and farming.chili and farming.cabbage,8,"farming:bibimbap", {
 	description = S("Bibimbap"),
 	inventory_image = "farming_bibimbap.png",
-	on_use = minetest.item_eat(8, a.bowl),
+	on_use = core.item_eat(8, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -489,7 +489,7 @@ register_craftitem(farming.chili and farming.rice and farming.chili and farming.
 register_craftitem(farming.lettuce and farming.tomato,16,"farming:burger", {
 	description = S("Burger"),
 	inventory_image = "farming_burger.png",
-	on_use = minetest.item_eat(16),
+	on_use = core.item_eat(16),
 	groups = {compostability = 95}
 })
 
@@ -498,7 +498,7 @@ register_craftitem(farming.lettuce and farming.tomato,16,"farming:burger", {
 register_craftitem(farming.lettuce and farming.tomato,8,"farming:salad", {
 	description = S("Salad"),
 	inventory_image = "farming_salad.png",
-	on_use = minetest.item_eat(8, a.bowl),
+	on_use = core.item_eat(8, a.bowl),
 	groups = {compostability = 45}
 })
 
@@ -507,7 +507,7 @@ register_craftitem(farming.lettuce and farming.tomato,8,"farming:salad", {
 register_craftitem(farming.raspberry and farming.blackberry and farming.strawberry,6,"farming:smoothie_berry", {
 	description = S("Triple Berry Smoothie"),
 	inventory_image = "farming_berry_smoothie.png",
-	on_use = minetest.item_eat(6, "vessels:drinking_glass"),
+	on_use = core.item_eat(6, "vessels:drinking_glass"),
 	groups = {vessel = 1, drink = 1, compostability = 65}
 })
 
@@ -516,7 +516,7 @@ register_craftitem(farming.raspberry and farming.blackberry and farming.strawber
 register_craftitem(farming.garlic and farming.parsley and farming.potato and farming.onion,8,"farming:spanish_potatoes", {
 	description = S("Spanish Potatoes"),
 	inventory_image = "farming_spanish_potatoes.png",
-	on_use = minetest.item_eat(8, a.bowl),
+	on_use = core.item_eat(8, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -525,7 +525,7 @@ register_craftitem(farming.garlic and farming.parsley and farming.potato and far
 register_craftitem(farming.onion and farming.potato,6,"farming:potato_omelet", {
 	description = S("Potato omelette"),
 	inventory_image = "farming_potato_omelet.png",
-	on_use = minetest.item_eat(6, a.bowl),
+	on_use = core.item_eat(6, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -534,7 +534,7 @@ register_craftitem(farming.onion and farming.potato,6,"farming:potato_omelet", {
 register_craftitem(farming.peas and farming.pepper and farming.rice,8,"farming:paella", {
 	description = S("Paella"),
 	inventory_image = "farming_paella.png",
-	on_use = minetest.item_eat(8, a.bowl),
+	on_use = core.item_eat(8, a.bowl),
 	groups = {compostability = 65}
 })
 
@@ -543,7 +543,7 @@ register_craftitem(farming.peas and farming.pepper and farming.rice,8,"farming:p
 register_craftitem(farming.vanilla and farming.soy,6,"farming:flan", {
 	description = S("Vanilla Flan"),
 	inventory_image = "farming_vanilla_flan.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 65}
 })
 
@@ -552,7 +552,7 @@ register_craftitem(farming.vanilla and farming.soy,6,"farming:flan", {
 register_craftitem(farming.corn and farming.pepper and farming.soy,2,"farming:cheese_vegan", {
 	description = S("Vegan Cheese"),
 	inventory_image = "farming_cheese_vegan.png",
-	on_use = minetest.item_eat(2),
+	on_use = core.item_eat(2),
 	groups = {compostability = 65, food_cheese = 1}
 })
 
@@ -569,7 +569,7 @@ register_craftitem(farming.soy and farming.sunflower,nil,"farming:butter_vegan",
 register_craftitem(farming.rice,2,"farming:onigiri", {
 	description = S("Onigiri"),
 	inventory_image = "farming_onigiri.png",
-	on_use = minetest.item_eat(2),
+	on_use = core.item_eat(2),
 	groups = {compostability = 65}
 })
 
@@ -578,7 +578,7 @@ register_craftitem(farming.rice,2,"farming:onigiri", {
 register_craftitem(farming.cabbage and farming.garlic and farming.onion,4,"farming:gyoza", {
 	description = S("Gyoza"),
 	inventory_image = "farming_gyoza.png",
-	on_use = minetest.item_eat(4),
+	on_use = core.item_eat(4),
 	groups = {compostability = 65}
 })
 
@@ -587,7 +587,7 @@ register_craftitem(farming.cabbage and farming.garlic and farming.onion,4,"farmi
 register_craftitem(farming.rice,3,"farming:mochi", {
 	description = S("Mochi"),
 	inventory_image = "farming_mochi.png",
-	on_use = minetest.item_eat(3),
+	on_use = core.item_eat(3),
 	groups = {compostability = 65}
 })
 
@@ -596,7 +596,7 @@ register_craftitem(farming.rice,3,"farming:mochi", {
 register_craftitem(farming.ginger,2,"farming:gingerbread_man", {
 	description = S("Gingerbread Man"),
 	inventory_image = "farming_gingerbread_man.png",
-	on_use = minetest.item_eat(2),
+	on_use = core.item_eat(2),
 	groups = {compostability = 85}
 })
 
@@ -604,7 +604,7 @@ register_craftitem(farming.ginger,2,"farming:gingerbread_man", {
 register_craftitem(farming.mint,2,"farming:mint_tea", {
 	description = S("Mint Tea"),
 	inventory_image = "farming_mint_tea.png",
-	on_use = minetest.item_eat(2, a.drinking_glass),
+	on_use = core.item_eat(2, a.drinking_glass),
 	groups = {drink = 1}
 })
 
@@ -613,7 +613,7 @@ register_craftitem(farming.onion,6,"farming:onion_soup", {
 	description = S("Onion Soup"),
 	inventory_image = "farming_onion_soup.png",
 	groups = {compostability = 65, drink = 1},
-	on_use = minetest.item_eat(6, a.bowl)
+	on_use = core.item_eat(6, a.bowl)
 })
 
 -- Pea soup
@@ -622,7 +622,7 @@ register_craftitem(farming.peas,4,"farming:pea_soup", {
 	description = S("Pea Soup"),
 	inventory_image = "farming_pea_soup.png",
 	groups = {compostability = 65, drink = 1},
-	on_use = minetest.item_eat(4, a.bowl)
+	on_use = core.item_eat(4, a.bowl)
 })
 
 -- Ground pepper
@@ -652,7 +652,7 @@ register_craftitem(farming.pineapple,1,"farming:pineapple_ring", {
 	description = S("Pineapple Ring"),
 	inventory_image = "farming_pineapple_ring.png",
 	groups = {food_pineapple_ring = 1, compostability = 45},
-	on_use = minetest.item_eat(1)
+	on_use = core.item_eat(1)
 })
 
 -- Pineapple juice
@@ -660,7 +660,7 @@ register_craftitem(farming.pineapple,1,"farming:pineapple_ring", {
 register_craftitem(farming.pineapple,4,"farming:pineapple_juice", {
 	description = S("Pineapple Juice"),
 	inventory_image = "farming_pineapple_juice.png",
-	on_use = minetest.item_eat(4, "vessels:drinking_glass"),
+	on_use = core.item_eat(4, "vessels:drinking_glass"),
 	groups = {vessel = 1, drink = 1, compostability = 35}
 })
 
@@ -669,7 +669,7 @@ register_craftitem(farming.pineapple,4,"farming:pineapple_juice", {
 register_craftitem(farming.potato,10,"farming:potato_salad", {
 	description = S("Cucumber and Potato Salad"),
 	inventory_image = "farming_potato_salad.png",
-	on_use = minetest.item_eat(10, "farming:bowl")
+	on_use = core.item_eat(10, "farming:bowl")
 })
 
 -- Pumpkin dough
@@ -684,7 +684,7 @@ register_craftitem(farming.pumpkin,nil,"farming:pumpkin_dough", {
 register_craftitem(farming.pumpkin,8,"farming:pumpkin_bread", {
 	description = S("Pumpkin Bread"),
 	inventory_image = "farming_pumpkin_bread.png",
-	on_use = minetest.item_eat(8),
+	on_use = core.item_eat(8),
 	groups = {food_bread = 1}
 })
 
@@ -693,7 +693,7 @@ register_craftitem(farming.pumpkin,8,"farming:pumpkin_bread", {
 register_craftitem(farming.raspberry,2,"farming:smoothie_raspberry", {
 	description = S("Raspberry Smoothie"),
 	inventory_image = "farming_raspberry_smoothie.png",
-	on_use = minetest.item_eat(2, "vessels:drinking_glass"),
+	on_use = core.item_eat(2, "vessels:drinking_glass"),
 	groups = {vessel = 1, drink = 1, compostability = 65}
 })
 
@@ -702,7 +702,7 @@ register_craftitem(farming.raspberry,2,"farming:smoothie_raspberry", {
 register_craftitem(farming.rhubarb,6,"farming:rhubarb_pie", {
 	description = S("Rhubarb Pie"),
 	inventory_image = "farming_rhubarb_pie.png",
-	on_use = minetest.item_eat(6),
+	on_use = core.item_eat(6),
 	groups = {compostability = 65}
 })
 
@@ -719,7 +719,7 @@ register_craftitem(farming.rice,nil,"farming:rice_flour", {
 register_craftitem(farming.rice,5,"farming:rice_bread", {
 	description = S("Rice Bread"),
 	inventory_image = "farming_rice_bread.png",
-	on_use = minetest.item_eat(5),
+	on_use = core.item_eat(5),
 	groups = {food_rice_bread = 1, compostability = 65}
 })
 
@@ -737,7 +737,7 @@ register_craftitem(farming.grains,nil,"farming:flour_multigrain", {
 register_craftitem(farming.grains,7,"farming:bread_multigrain", {
 	description = S("Multigrain Bread"),
 	inventory_image = "farming_bread_multigrain.png",
-	on_use = minetest.item_eat(7),
+	on_use = core.item_eat(7),
 	groups = {food_bread = 1, compostability = 65}
 })
 
@@ -775,7 +775,7 @@ register_node(farming.soy,2,"farming:soy_milk", {
 	selection_box = {
 		type = "fixed", fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	on_use = minetest.item_eat(2, "vessels:drinking_glass"),
+	on_use = core.item_eat(2, "vessels:drinking_glass"),
 	groups = {
 		vessel = 1, food_milk_glass = 1, dig_immediate = 3, handy = 1,
 		attached_node = 1, drink = 1, compostability = 65
@@ -792,7 +792,7 @@ register_craftitem(farming.soy,3,"farming:tofu", {
 	groups = {
 		food_tofu = 1, food_meat_raw = 1, compostability = 65,
 	},
-	on_use = minetest.item_eat(3)
+	on_use = core.item_eat(3)
 })
 
 -- Cooked tofu
@@ -801,7 +801,7 @@ register_craftitem(farming.soy,6,"farming:tofu_cooked", {
 	description = S("Cooked Tofu"),
 	inventory_image = "farming_tofu_cooked.png",
 	groups = {food_meat = 1, compostability = 65},
-	on_use = minetest.item_eat(6)
+	on_use = core.item_eat(6)
 })
 
 -- Toasted sunflower seeds
@@ -810,7 +810,7 @@ register_craftitem(farming.sunflower,1,"farming:sunflower_seeds_toasted", {
 	description = S("Toasted Sunflower Seeds"),
 	inventory_image = "farming_sunflower_seeds_toasted.png",
 	groups = {food_sunflower_seeds_toasted = 1, compostability = 65},
-	on_use = minetest.item_eat(1)
+	on_use = core.item_eat(1)
 })
 
 -- Sunflower oil
@@ -839,7 +839,7 @@ register_node(farming.sunflower,nil,"farming:sunflower_oil", {
 register_craftitem(farming.sunflower,8,"farming:sunflower_bread", {
 	description = S("Sunflower Seed Bread"),
 	inventory_image = "farming_sunflower_bread.png",
-	on_use = minetest.item_eat(8),
+	on_use = core.item_eat(8),
 	groups = {food_bread = 1}
 })
 
@@ -866,7 +866,7 @@ register_node(farming.vanilla and farming.corn,nil,"farming:vanilla_extract", {
 register_craftitem(farming.artichoke and farming.soy and farming.garlic,11,"farming:jerusalem_artichokes", {
 	description = S("Jerusalem Artichokes"),
 	inventory_image = "farming_jerusalem_artichokes.png",
-	on_use = minetest.item_eat(11, a.bowl)
+	on_use = core.item_eat(11, a.bowl)
 })
 
 --= Foods we shouldn't add when using Mineclonia/VoxeLibre
@@ -878,7 +878,7 @@ if not farming.mcl then
 	register_craftitem(true,5,"farming:bread", {
 		description = S("Bread"),
 		inventory_image = "farming_bread.png",
-		on_use = minetest.item_eat(5),
+		on_use = core.item_eat(5),
 		groups = {food_bread = 1}
 	})
 
@@ -895,7 +895,7 @@ if not farming.mcl then
 	register_craftitem(farming.cocoa,2,"farming:cookie", {
 		description = S("Cookie"),
 		inventory_image = "farming_cookie.png",
-		on_use = minetest.item_eat(2)
+		on_use = core.item_eat(2)
 	})
 
 	-- Golden carrot
@@ -903,7 +903,7 @@ if not farming.mcl then
 	register_craftitem(farming.carrot,10,"farming:carrot_gold", {
 		description = S("Golden Carrot"),
 		inventory_image = "farming_carrot_gold.png",
-		on_use = minetest.item_eat(10)
+		on_use = core.item_eat(10)
 	})
 
 	-- Beetroot soup
@@ -911,7 +911,7 @@ if not farming.mcl then
 	register_craftitem(farming.beetroot,6,"farming:beetroot_soup", {
 		description = S("Beetroot Soup"),
 		inventory_image = "farming_beetroot_soup.png",
-		on_use = minetest.item_eat(6, "farming:bowl"),
+		on_use = core.item_eat(6, "farming:bowl"),
 		groups = {drink = 1}
 	})
 
@@ -928,6 +928,6 @@ if not farming.mcl then
 	register_craftitem(farming.potato,6,"farming:baked_potato", {
 		description = S("Baked Potato"),
 		inventory_image = "farming_baked_potato.png",
-		on_use = minetest.item_eat(6)
+		on_use = core.item_eat(6)
 	})
 end
