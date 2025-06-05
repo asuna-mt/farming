@@ -197,7 +197,7 @@ core.register_abm({
 
 -- those darn weeds
 
-if core.settings:get_bool("farming_disable_weeds",false) ~= true then
+if core.settings:get_bool("farming_disable_weeds",true) ~= true then
 
 	core.register_abm({
 		nodenames = {"group:field"},
